@@ -1,10 +1,11 @@
 import React from 'react';
+import '../style/calculator.css';
 
 export default function Calculator() {
     return (
         <div>
             <h1>Calculator</h1>
-            <button>1</button>
+            <button className='numeric-button'>1</button>
             <button>2</button>
             <button>3</button>
             <button>+</button>

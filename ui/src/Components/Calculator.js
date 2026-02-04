@@ -6,22 +6,22 @@ export default function Calculator() {
         <div>
             <h1>Calculator</h1>
             <button className='numeric-button'>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>+</button>
-            <button>=</button>
+            <button className='numeric-button'>2</button>
+            <button className='numeric-button'>3</button>
+            <button className='operation-button'>+</button>
+            <button className='operation-button'>=</button>
             <br />
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>-</button>
-            <button>C</button>
+            <button className='numeric-button'>4</button>
+            <button className='numeric-button'>5</button>
+            <button className='numeric-button'>6</button>
+            <button className='operation-button'>-</button>
+            <button className='operation-button'>C</button>
             <br />
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>*</button>
-            <button>/</button>
+            <button className='numeric-button'>7</button>
+            <button className='numeric-button'>8</button>
+            <button className='numeric-button'>9</button>
+            <button className='operation-button'>*</button>
+            <button className='operation-button'>/</button>
         </div>
     );
 }

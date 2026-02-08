@@ -5,6 +5,8 @@ export default function Calculator() {
     return (
         <div>
             <h1>Calculator</h1>
+            <input type="text" className='display' readOnly />
+            <br />
             <button className='numeric-button'>1</button>
             <button className='numeric-button'>2</button>
             <button className='numeric-button'>3</button>

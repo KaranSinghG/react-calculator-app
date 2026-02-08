@@ -4,7 +4,8 @@
   "private": true,
   "main": "electron/main.js",
   "scripts": {
-    "start": "concurrently \"npm start --prefix ui\" \"electron .\""
+    "start": "electron .",
+    "ui:start": "npm start --prefix ui"
   },
   "devDependencies": {
     "electron": "^40.0.0",

@@ -63,7 +63,7 @@ export default function Calculator() {
     return (
         <div>
             <h1>Calculator</h1>
-            <input type="text" className='display' readOnly value={display} />
+            <input type="text" className='display' value={display} />
             <br />
             <button className='numeric-button' onClick={() => handleNumberClick(1)}>1</button>
             <button className='numeric-button' onClick={() => handleNumberClick(2)}>2</button>

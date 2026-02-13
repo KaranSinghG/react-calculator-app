@@ -7,13 +7,41 @@ export default function Calculator() {
     const [operation, setOperation] = useState(null);
     const [shouldResetDisplay, setShouldResetDisplay] = useState(false);
 
+    // Append a digit or decimal from buttons or programmatic calls
     const handleNumberClick = (num) => {
+        const char = String(num);
+        if (char === '.' && display.includes('.')) return; // prevent multiple decimals
+
         if (shouldResetDisplay) {
-            setDisplay(String(num));
+            setDisplay(char === '.' ? '0.' : char);
             setShouldResetDisplay(false);
-        } else {
-            setDisplay(display + num);
+            return;
         }
+
+        // Prevent leading multiple zeros: if display is '0' and adding digit, replace
+        if (display === '0' && char !== '.') {
+            setDisplay(char);
+            return;
+        }
+
+        setDisplay((prev) => prev + char);
+    };
+
+    // Handle typing in the input: allow only digits and one optional decimal
+    const handleInputChange = (value) => {
+        const v = String(value);
+        if (v === '') {
+            setDisplay('');
+            return;
+        }
+
+        // Allow only characters that form a valid partial number
+        if (!/^\d*\.?\d*$/.test(v)) return;
+
+        // normalize leading zeros except when followed by a decimal (keep '0.' )
+        const normalized = v.replace(/^0+(?=\d)/, '');
+        setDisplay(normalized);
+        setShouldResetDisplay(false);
     };
 
     const handleOperationClick = (op) => {
@@ -63,7 +91,13 @@ export default function Calculator() {
     return (
         <div>
             <h1>Calculator</h1>
-            <input type="text" className='display' value={display} />
+            <input
+                type="text"
+                className='display'
+                value={display}
+                onChange={(e) => handleInputChange(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') handleEquals(); }}
+            />
             <br />
             <button className='numeric-button' onClick={() => handleNumberClick(1)}>1</button>
             <button className='numeric-button' onClick={() => handleNumberClick(2)}>2</button>
